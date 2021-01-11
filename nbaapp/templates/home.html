@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+
+<h1>Scores</h1>
+<br/>
+<br/>
+
+{% if team %}
+	{{ team }}
+{% endif %}
+
+{% if api %}
+	{% if api == 'Error...' %}
+		There was a problem...please try again...
+	{% else %} 	
+		<table class="table">
+		  <thead class="thead-dark">
+		    <tr>
+		      <th scope="col">Home Team</th>
+		      <th scope="col">Home Score</th>
+		      <th scope="col">Visiting Team</th>
+		      <th scope="col">Visiting Score</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  	{% for item in test_list %}	
+		  		<tr>		
+					<td>{{ item.home_team.full_name }}</td>
+					<td>{{ item.home_team_score }}</td>
+					<td>{{ item.visitor_team.full_name }}</td>
+					<td>{{ item.visitor_team_score }}</td>
+				</tr>
+			{% endfor %}
+		  </tbody>
+		</table>	
+				
+	{% endif %}	
+{% endif %}
+
+<!--
+{{ item }}<br/><br/>	
+{{ api }}<br/><br/>
+{{ test_list }}<br/><br/>
+{{ new_dict }}<br/><br/>
+{{ home_team }}<br/><br/>
+{{ visitor_team }}<br/><br/>
+{{ home_dict }}<br/><br/>
+{{ visitor_dict }}<br/><br/>
+{{ home_full_name }}<br/><br/>
+{{ home_team_score }}<br/><br/>
+{{ visitor_full_name }}<br/><br/>
+{{ visitor_team_score }}<br/><br/>
+-->
+
+{% endblock %}
